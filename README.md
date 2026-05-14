@@ -28,8 +28,8 @@ PHALANX is a security-focused web interface designed to intercept, log, and mana
 
 1. Update and Prepare System
 # Open your VM terminal and ensure your package list is updated:
-sudo apt update && sudo apt upgrade -y
-sudo apt install python3-pip python3-venv -y
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install python3-pip python3-venv -y
 
 2. Clone or Upload Files
 Navigate to your project directory (e.g., /home/user/authlogix). If you're uploading via SFTP or manual copy, ensure all files from the structure above are present.
