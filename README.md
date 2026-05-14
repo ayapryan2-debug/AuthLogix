@@ -27,6 +27,7 @@ Installation & Setup (Linux/VM)
 Bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install python3-pip python3-venv ufw mysql-server -y
+
 2. Clone / Upload Project
 Place the project folder in your VM (e.g., /home/user/authlogix).
 
@@ -34,9 +35,11 @@ Place the project folder in your VM (e.g., /home/user/authlogix).
 Bash
 python3 -m venv venv
 source venv/bin/activate
+
 4. Install Dependencies
 Bash
 pip install -r requirements.txt
+
 5. MySQL Database Setup
 Log in to MySQL (sudo mysql) and run:
 
@@ -51,12 +54,15 @@ CREATE TABLE access_requests (
     status ENUM('pending', 'approved', 'denied') DEFAULT 'pending',
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 6. Firewall Setup (UFW)
 Bash
 sudo ufw enable
 sudo ufw allow 5001/tcp
 sudo ufw allow 22/tcp
-🚀 Running the Application
+
+
+Running the Application
 Option A: Development Mode
 Bash
 python3 app.py
