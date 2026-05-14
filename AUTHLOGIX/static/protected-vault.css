@@ -1,0 +1,234 @@
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+
+  header {
+    background: #1e3a8a;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+  }
+
+  nav {
+    background: #172554;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+
+  nav a:hover, nav a.active-nav {
+    background: #1e3a8a;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active-view {
+    display: block;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  .card h3 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  .info-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+  }
+
+  .info-section h2 {
+    margin-bottom: 20px;
+    color: #1e3a8a;
+    border-bottom: 2px solid #eff6ff;
+    padding-bottom: 10px;
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  th {
+    background: #eff6ff;
+    color: #1e3a8a;
+  }
+
+  .status {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    min-width: 80px;
+  }
+
+  .status.active {
+    background: #dcfce7;
+    color: #166534;
+  }
+  
+  .status.pending {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .grade-badge {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .grade-passed {
+    color: #166534;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+
+  .grade-pending {
+    color: #92400e;
+    background: #fffbef;
+    border: 1px solid #fef3c7;
+  }
+
+  .styled-list {
+    margin-left: 20px;
+    margin-top: 10px;
+    line-height: 1.8;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: #1e293b;
+    color: white;
+  }
+
+  @media (max-width: 480px) {
+    header {
+      padding: 20px 10px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    header p {
+      font-size: 0.9rem;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      padding: 8px;
+    }
+
+    nav a {
+      padding: 10px 2px;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .card-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      padding: 15px;
+    }
+
+    .card p {
+      font-size: 1.5rem;
+    }
+
+    .container {
+      padding: 0 10px;
+      margin: 15px auto;
+    }
+
+    .info-section {
+      padding: 15px 10px;
+      margin-bottom: 20px;
+    }
+
+    .info-section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    th, td {
+      padding: 8px;
+      font-size: 0.85rem;
+    }
+  }

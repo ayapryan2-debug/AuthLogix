@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cloud 4 - Secure Information Hub</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='protected-vault.css') }}">
+</head>
+<body>
+
+<header>
+  <h1>Cloud 4</h1>
+  <p>Secure Information Hub</p>
+</header>
+
+<nav id="nav-bar">
+  <a data-target="dashboard" class="active-nav">Dashboard</a>
+  <a data-target="records">Records</a>
+  <a data-target="reports">Reports</a>
+</nav>
+
+<div class="container">
+
+  <div id="dashboard" class="tab-content active-view">
+    <section class="card-grid">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p>152</p>
+      </div>
+      <div class="card">
+        <h3>Stored Records</h3>
+        <p>1,248</p>
+      </div>
+      <div class="card">
+        <h3>Protected Files</h3>
+        <p>96</p>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>Students Grade Registry</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Department</th>
+              <th>Status</th>
+              <th>Grade / Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ryan Ayap</strong></td>
+              <td>Fine Arts, Architecture and Design</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">100%</span></td>
+            </tr>
+            <tr>
+              <td><strong>John Gabriel Ilagan</strong></td>
+              <td>Mechanical Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">95%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ralfh Cueto</strong></td>
+              <td>Chemical Engineering</td>
+              <td><span class="status pending">Pending</span></td>
+              <td><span class="grade-badge grade-pending">TBA</span></td>
+            </tr>
+            <tr>
+              <td><strong>Crishaun Myel Marquez</strong></td>
+              <td>Electronics Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">93%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ma. Trixia Padasen</strong></td>
+              <td>College of Informatics and Computing Sciences</td>
+              <td><span class="status pending">Pending</span></td>
+              <td><span class="grade-badge grade-pending">TBA</span></td>
+            </tr>
+            <tr>
+              <td><strong>Kiara Angeline Abanto</strong></td>
+              <td>Industrial Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">98%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Rica Mylles Carisma</strong></td>
+              <td>Fine Arts, Architecture and Design</td>
+              <td><span class="status pending">Pending</span></td>
+              <td><span class="grade-badge grade-pending">TBA</span></td>
+            </tr>
+            <tr>
+              <td><strong>Jhamilla Zen Adajar</strong></td>
+              <td>Civil Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">95%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Christine Joy Biding</strong></td>
+              <td>Electrical Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">92%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Roxette Sandoval</strong></td>
+              <td>Chemical Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">94%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Celine San Andres</strong></td>
+              <td>Fine Arts, Architecture and Design</td>
+              <td><span class="status pending">Pending</span></td>
+              <td><span class="grade-badge grade-pending">TBA</span></td>
+            </tr>
+            <tr>
+              <td><strong>John Francis Ilagan</strong></td>
+              <td>Civil Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">96%</span></td>
+            </tr>
+            <tr>
+              <td><strong>John Robert De Castro</strong></td>
+              <td>Mechanical Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">91%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Marc Arby De Chavez</strong></td>
+              <td>College of Informatics and Computing Sciences</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">97%</span></td>
+            </tr>
+            <tr>
+              <td><strong>Lorraine Anne Manglo</strong></td>
+              <td>Industrial Engineering</td>
+              <td><span class="status pending">Pending</span></td>
+              <td><span class="grade-badge grade-pending">TBA</span></td>
+            </tr>
+            <tr>
+              <td><strong>Dorothy Shane Villena</strong></td>
+              <td>Electronics Engineering</td>
+              <td><span class="status active">Done</span></td>
+              <td><span class="grade-badge grade-passed">93%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div id="records" class="tab-content">
+    <section class="info-section">
+      <h2>Departmental Data Records</h2>
+      <p style="margin-bottom: 15px; color: #666;">
+        Below is the centralized storage ledger mapping departmental data uploads, file size footprints, and structural keys.
+      </p>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Record ID</th>
+              <th>Source Department</th>
+              <th>File Size</th>
+              <th>Encryption Method</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>REC-001</td>
+              <td>Civil Engineering</td>
+              <td>14.8 MB</td>
+              <td>AES-256 Bit</td>
+              <td><span class="status active">Secured</span></td>
+            </tr>
+            <tr>
+              <td>REC-002</td>
+              <td>Mechanical Engineering</td>
+              <td>8.2 MB</td>
+              <td>RSA-4096</td>
+              <td><span class="status active">Secured</span></td>
+            </tr>
+            <tr>
+              <td>REC-003</td>
+              <td>Electrical Engineering</td>
+              <td>24.5 MB</td>
+              <td>AES-256 Bit</td>
+              <td><span class="status active">Secured</span></td>
+            </tr>
+            <tr>
+              <td>REC-004</td>
+              <td>College of Informatics and Computing Sciences</td>
+              <td>4.1 MB</td>
+              <td>SHA-256 Hash</td>
+              <td><span class="status pending">Verifying</span></td>
+            </tr>
+            <tr>
+              <td>REC-005</td>
+              <td>Chemical Engineering</td>
+              <td>18.3 MB</td>
+              <td>AES-256 Bit</td>
+              <td><span class="status active">Secured</span></td>
+            </tr>
+            <tr>
+              <td>REC-006</td>
+              <td>Fine Arts, Architecture and Design</td>
+              <td>45.7 MB</td>
+              <td>RSA-4096</td>
+              <td><span class="status active">Secured</span></td>
+            </tr>
+            <tr>
+              <td>REC-007</td>
+              <td>Industrial Engineering</td>
+              <td>11.4 MB</td>
+              <td>SHA-256 Hash</td>
+              <td><span class="status pending">Verifying</span></td>
+            </tr>
+            <tr>
+              <td>REC-008</td>
+              <td>Electronics Engineering</td>
+              <td>15.9 MB</td>
+              <td>AES-256 Bit</td>
+              <td><span class="status active">Secured</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div id="reports" class="tab-content">
+    <section class="info-section">
+      <h2>System Audits & Metrics</h2>
+      <p style="margin-bottom: 20px; color: #666;">
+        Overview statistics on server performance, file changes, and project audit benchmarks.
+      </p>
+
+      <h3 style="color: #1e3a8a; margin-bottom: 10px;">Recent Audit Highlights</h3>
+      <ul class="styled-list" style="margin-bottom: 25px;">
+        <li><strong>Server Uptime:</strong> 99.98% over the past 30 days.</li>
+        <li><strong>Media Query Responsive Testing:</strong> Passed (Verified across desktop, tablet, Android, and iOS).</li>
+        <li><strong>Pending Tasks Check:</strong> 5 out of 16 student clearances are awaiting final review.</li>
+      </ul>
+
+      <h3 style="color: #1e3a8a; margin-bottom: 10px;">Weekly Transfer Volumes</h3>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Data Read</th>
+              <th>Data Written</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>4.2 GB</td>
+              <td>1.8 GB</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>3.9 GB</td>
+              <td>1.5 GB</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>5.1 GB</td>
+              <td>2.2 GB</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>4.7 GB</td>
+              <td>2.0 GB</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>3.8 GB</td>
+              <td>1.1 GB</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>2.1 GB</td>
+              <td>0.9 GB</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>1.8 GB</td>
+              <td>0.6 GB</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Cloud 4. All Rights Reserved.</p>
+</footer>
+
+<script src="{{ url_for('static', filename='vault.js') }}"></script>
+</body>
+</html>

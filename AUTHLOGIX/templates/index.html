@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTHLOGIX | SOC COMMAND</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='soc_style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="brand">AUTHLOGIX // MESH-CORE</div>
+    <div style="font-size: 0.8rem;">
+        <span style="color: #8b949e;">OP:</span> <span style="color: var(--success-green);">{{ session['user'] }}</span>
+        <a href="/logout" style="margin-left: 20px; color: var(--danger-red); text-decoration: none; border: 1px solid; padding: 5px 10px; border-radius: 3px;">TERMINATE</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col" style="flex: 1;">
+            <div class="stat-card">
+                <div class="stat-label">CPU LOAD</div>
+                <div class="stat-value">{{ cpu }}</div>
+                <div style="background: #000; height: 4px; border-radius: 2px; overflow: hidden; border: 1px solid #222; margin-top: 5px;">
+                    <div style="width: {{ cpu }}; background: var(--terminal-green); height: 100%; box-shadow: 0 0 8px var(--terminal-green);"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col" style="flex: 1;">
+            <div class="stat-card">
+                <div class="stat-label">RAM USAGE</div>
+                <div class="stat-value">{{ ram }}</div>
+                <div style="background: #000; height: 4px; border-radius: 2px; overflow: hidden; border: 1px solid #222; margin-top: 5px;">
+                    <div style="width: {{ ram }}; background: var(--text-cyan); height: 100%; box-shadow: 0 0 8px var(--text-cyan);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 5px;">
+        <div class="col w-65">
+            <div class="box">
+                <div class="box-header">
+                    <span>ACCESS REQUEST QUEUE</span>
+                    <span class="status-badge">Live Intercept</span>
+                </div>
+                <div class="log-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Identity</th>
+                                <th>Signature</th>
+                                <th style="text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="request-queue"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col w-35">
+            <div class="box">
+                <div class="box-header">
+                    <span>FIREWALL STATUS</span>
+                    <span><span class="status-dot"></span> ACTIVE</span>
+                </div>
+                
+                <div class="terminal-container">
+                    <div class="terminal-top-bar">root@authlogix:~# ufw status</div>
+                    <div class="terminal-content" id="console">{{ ufw_status }}</div>
+                </div>
+
+                <div class="management-console">
+                    <div style="font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; color: var(--text-cyan);">MANAGEMENT CONSOLE</div>
+                    <form action="/manual_cmd" method="POST">
+                        <input type="text" name="manual_ip" placeholder="Target IP Address" required class="mgmt-input">
+                        <input type="text" name="manual_port" placeholder="Destination Port (e.g. 5001)" required class="mgmt-input">
+                        <div class="action-group">
+                            <button name="manual_action" value="allow" class="btn-action btn-allow" style="flex: 1;">FORCE ALLOW</button>
+                            <button name="manual_action" value="deny" class="btn-action btn-deny" style="flex: 1;">FORCE DENY</button>
+                        </div>
+                    </form>
+
+                    <a href="/history" style="display: block; width: 100%; margin-top: 15px; padding: 10px; background: rgba(88, 166, 255, 0.1); border: 1px solid var(--text-cyan); color: var(--text-cyan); text-align: center; text-decoration: none; font-family: 'Courier New', monospace; font-size: 0.75rem; font-weight: bold; letter-spacing: 1px; transition: 0.3s; box-sizing: border-box;" 
+                       onmouseover="this.style.background='var(--text-cyan)'; this.style.color='#000';" 
+                       onmouseout="this.style.background='rgba(88, 166, 255, 0.1)'; this.style.color='var(--text-cyan)';" >
+                        VIEW SECURITY AUDIT TRAIL
+                    </a>
+
+                    <p style="font-size: 0.6rem; color: #555; margin-top: 10px; text-align: center;">
+                        *Use Force Deny to revoke access if a mistake was made.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const CPU = "{{ cpu }}";
+    const RAM = "{{ ram }}";
+</script>
+<script src="{{ url_for('static', filename='soc_dashboard.js') }}"></script>
+
+</body>
+</html>

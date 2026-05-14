@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve AuthLogix
+After=network.target
+
+[Service]
+User=your-username
+Group=www-data
+WorkingDirectory=/home/your-username/authlogix
+ExecStart=/usr/bin/python3 app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuthLogix | Secure Terminal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+</head>
+<body>
+
+<div class="box">
+    <div class="glitch-wrapper">
+        <h2>
+            <span class="status-dot"></span>
+            {% if is_admin %}
+                Admin Terminal
+            {% else %}
+                Access Portal
+            {% endif %}
+        </h2>
+    </div>
+
+    {% if error %}
+        <div class="error">
+            <strong>SYSTEM ERROR:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        <input name="username" placeholder="IDENTIFICATION" required autocomplete="off">
+        
+        {% if is_admin %}
+            <input type="password" name="password" placeholder="ACCESS_KEY" required>
+        {% endif %}
+
+        <button type="submit">
+            {% if is_admin %} Authenticate {% else %} Request Uplink {% endif %}
+        </button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+# --- AuthLogix System GitIgnore ---
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual Environment (CRITICAL: Wag i-upload ang venv folder!)
+venv/
+env/
+ENV/
+.venv/
+
+# Database Files (Local MySQL backups o SQLite)
+*.sql
+!database.sql
+*.sqlite3
+*.db
+
+# Configuration & Secrets
+.env
+.flaskenv
+instance/
+.webassets-cache
+
+# IDE Settings (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+authlogix.log

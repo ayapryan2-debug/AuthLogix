@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTHLOGIX | SECURITY AUDIT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='history_style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="brand">PHALANX // FORENSIC_MOD</div>
+    <div id="clock">00:00:00</div>
+    <a href="/" class="hq-btn">GO TO DASHBOARD</a>
+</nav>
+
+<div class="container">
+    <!-- ... (Lahat ng HTML content mo dito ay mananatili) ... -->
+    <div class="metrics-row">
+        <div class="metric-card"><h3 id="count-total" style="color: var(--accent-blue);">0</h3><span>Total_Logs</span></div>
+        <div class="metric-card"><h3 id="count-allow" style="color: var(--neon-green);">0</h3><span>Approved</span></div>
+        <div class="metric-card"><h3 id="count-deny" style="color: var(--neon-red);">0</h3><span>Denied</span></div>
+        <div class="metric-card"><h3 id="count-nodes" style="color: #f2cc60;">0</h3><span>Nodes</span></div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="logSearch" class="search-bar" placeholder="EXECUTE_DB_QUERY (Search Identity, IP, or Status)..." onkeyup="filterLogs()">
+    </div>
+
+    <div class="table-box">
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>Timestamp (PHT)</th>
+                    <th>Node Identity</th>
+                    <th>Network Signature</th>
+                    <th>Final Action</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='history.js') }}">
+    
+</script>
+
+</body>
+</html>
