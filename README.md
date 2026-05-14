@@ -1,97 +1,91 @@
-# AUTHLOGIX // MESH-CORE SOC COMMAND
-> A Lightweight Forensic & Intrusion Monitoring Dashboard built with Flask.
+## 📂 Project Structure
 
-PHALANX is a security-focused web interface designed to intercept, log, and manage network access requests in real-time. It features a SOC (Security Operations Center) dashboard with live metrics, terminal-style logs, and manual firewall controls.
+```text
+AuthLogix/
+│
+├── static/
+│   ├── history_style.css      # Audit logs styling
+│   ├── login.css              # Auth page styling
+│   ├── protected-vault.css    # Intercepted route styling
+│   └── soc_style.css          # Main SOC dashboard UI
+│
+├── templates/
+│   ├── history.html           # Forensic logs view
+│   ├── index.html             # SOC Command Center
+│   ├── login.html             # Admin portal
+│   └── protected-vault.html   # Simulated target resource
+│
+├── app.py                     # Backend Logic & Interceptor
+├── authlogix.service          # Systemd configuration
+├── database.sql               # Database schema
+├── README.md                  # Documentation
+└── requirements.txt              # Dependencies
+|__ .gitignore
 
-# Directories of the Files
-    AuthLogix/
-    │
-    ├── static/
-    │   ├── history_style.css
-    │   ├── login.css
-    │   ├── protected-vault.css
-    │   └── soc_style.css
-    │
-    ├── templates/
-    │   ├── history.html
-    │   ├── index.html
-    │   ├── login.html
-    │   └── protected-vault.html
-    │
-    ├── app.py
-    ├── authlogix.service
-    ├── database.sql
-    ├── README.md
-    └── requirements.txt
+Installation & Setup (Linux/VM)
+1. System Update
+Bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3-pip python3-venv ufw mysql-server -y
+2. Clone / Upload Project
+Place the project folder in your VM (e.g., /home/user/authlogix).
 
-# Installation & Setup on a VM
+3. Create Virtual Environment
+Bash
+python3 -m venv venv
+source venv/bin/activate
+4. Install Dependencies
+Bash
+pip install -r requirements.txt
+5. MySQL Database Setup
+Log in to MySQL (sudo mysql) and run:
 
-1. Update and Prepare System
-# Open your VM terminal and ensure your package list is updated:
-    sudo apt update && sudo apt upgrade -y
-    sudo apt install python3-pip python3-venv -y
+SQL
+CREATE DATABASE authlogix_db;
+USE authlogix_db;
 
-2. Clone or Upload Files
-Navigate to your project directory (e.g., /home/user/authlogix). If you're uploading via SFTP or manual copy, ensure all files from the structure above are present.
+CREATE TABLE access_requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    ip_address VARCHAR(45),
+    status ENUM('pending', 'approved', 'denied') DEFAULT 'pending',
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+6. Firewall Setup (UFW)
+Bash
+sudo ufw enable
+sudo ufw allow 5001/tcp
+sudo ufw allow 22/tcp
+🚀 Running the Application
+Option A: Development Mode
+Bash
+python3 app.py
+Local: http://localhost:5001
 
-3. Create a Virtual Environment (Recommended)
-# This keeps your system clean and prevents tool conflicts:
-    python3 -m venv venv
-    source venv/bin/activate
+Remote: http://<VM_IP>:5001
 
-4. Database Setup with MYSQL
-    sudo mysql
-    CREATE DATABASE authlogix_db;
-    USE authlogix_db;
-    CREATE TABLE access_requests (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(255),
-        ip_address VARCHAR(45),
-        status ENUM('pending', 'approved', 'denied') DEFAULT 'pending',
-        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
+Option B: Production Deployment (systemd)
+Create service file: sudo nano /etc/systemd/system/authlogix.service
 
-5. Create systemd service file
-    sudo nano /etc/systemd/system/authlogix.service
+Paste configuration:
 
-# Paste this to authlogix.service
+Ini, TOML
 [Unit]
-Description=Gunicorn instance to serve AuthLogix
+Description=AuthLogix Gunicorn Service
 After=network.target
 
 [Service]
 User=your-username
 Group=www-data
 WorkingDirectory=/home/your-username/authlogix
-ExecStart=/usr/bin/gunicorn app:app
+ExecStart=/home/your-username/authlogix/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5001 app:app
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
+Enable and Start:
 
-# Enable Service
+Bash
 sudo systemctl daemon-reload
 sudo systemctl enable authlogix
 sudo systemctl start authlogix
-
-# Check the status 
-sudo systemctl status authlogix
-
-5. Install Dependecies
-# Use the requirements.txt file to install all necessary tools
-    pip install -r requirements.txt
-
-6. Setup Firewall
-# Since the dashboard displays UFW status, ensure it is active on your VM:
-    sudo ufw enable
-    sudo ufw allow 5001/tcp  # Allow the Web UI Port
-    sudo ufw allow 22/tcp    # Keep SSH open to avoid lockout!
-
-7. Running the Application
-# To start the AuthLogix SOC Command:
-    python3 app.py
-
-# Access the dashboard via browser:
- - Local: http://localhost:5001
- - Remote (VM IP): http://<YOUR_VM_IP>:5001
-
